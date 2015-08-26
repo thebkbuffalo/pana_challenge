@@ -32,4 +32,6 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
   });
 });
 
-App.start();
+$(document).ready(function(){
+  App.start();
+});
