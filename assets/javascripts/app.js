@@ -31,3 +31,5 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     App.mainRegion.show(new TodoListView({ collection: collection }));
   });
 });
+
+App.start();
