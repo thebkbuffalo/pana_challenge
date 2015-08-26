@@ -5,3 +5,7 @@ body {
 #main {
   margin-top: 15em;
 }
+
+ul {
+  list-style-type: none;
+}
