@@ -40,17 +40,19 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     add: function(){
       var input = this.ui.myInput.val();
       console.log(input);
+      localStorage.setItem('Todoitem', input);
       var added = this.collection.add({name: input});
       this.render();
     },
     done: function(child){
       this.collection.remove(child.model);
+      localStorage.removeItem('Todoitem');
       this.render();
     }
   });
 
   Todo.addInitializer(function(){
-    var todos = [];
+    var todos = localStorage.getItem("Todoitem");
     var collection = new TodoCollection(todos);
     App.mainRegion.show(new TodoListView({ collection: collection }));
   });
