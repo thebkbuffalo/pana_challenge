@@ -24,4 +24,10 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
       myInput: '#myInput'
     }
   });
+
+  Todo.addInitializer(function(){
+    var todos = [];
+    var collection = new TodoCollection(todos);
+    App.mainRegion.show(new TodoListView({ collection: collection }));
+  });
 });
