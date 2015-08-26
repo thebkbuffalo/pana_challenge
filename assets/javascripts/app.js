@@ -9,7 +9,6 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
 
   var TodoCollection = Backbone.Collection.extend({
     model: TodoItem,
-    localStorage: new Backbone.LocalStorage("store")
   });
 
   var TodoItemView = Marionette.ItemView.extend({
@@ -42,7 +41,6 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
       var input = this.ui.myInput.val();
       console.log(input);
       var added = this.collection.add({name: input});
-      added.save("");
       this.render();
     },
     done: function(child){
