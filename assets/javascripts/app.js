@@ -8,7 +8,8 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
   var TodoItem = Backbone.Model.extend({});
 
   var TodoCollection = Backbone.Collection.extend({
-    model: TodoItem
+    model: TodoItem,
+    localStorage: new Backbone.LocalStorage("store")
   });
 
   var TodoItemView = Marionette.ItemView.extend({
@@ -40,7 +41,8 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     add: function(){
       var input = this.ui.myInput.val();
       console.log(input);
-      this.collection.add({name: this.ui.myInput.val()});
+      var added = this.collection.add({name: input});
+      added.save("");
       this.render();
     },
     done: function(child){
