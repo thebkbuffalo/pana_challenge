@@ -10,4 +10,18 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
   var TodoCollection = Backbone.Collection.extend({
     model: TodoItem
   });
+
+  var TodoItemView = Marionette.ItemView.extend({
+    template: "#todo-item",
+    tagName: "li",
+  });
+
+  var TodoListView = Marionette.CompositeView.extend({
+    childView: TodoItemView,
+    childViewContainer: 'ul',
+    template: "#todo-list",
+    ui: {
+      myInput: '#myInput'
+    }
+  });
 });
