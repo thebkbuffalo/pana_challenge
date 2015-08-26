@@ -22,6 +22,11 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     template: "#todo-list",
     ui: {
       myInput: '#myInput'
+    },
+    templateHelpers: function(){
+      return {
+        todosLength: this.collection.length
+      };
     }
   });
 
