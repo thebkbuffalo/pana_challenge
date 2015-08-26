@@ -14,6 +14,9 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
   var TodoItemView = Marionette.ItemView.extend({
     template: "#todo-item",
     tagName: "li",
+    triggers: {
+      'click': 'done'
+    }
   });
 
   var TodoListView = Marionette.CompositeView.extend({
@@ -23,10 +26,26 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     ui: {
       myInput: '#myInput'
     },
+    events: {
+      'click #button': 'add'
+    },
+    childEvents: {
+      'done': 'done'
+    },
     templateHelpers: function(){
       return {
         todosLength: this.collection.length
       };
+    },
+    add: function(){
+      var input = this.ui.myInput.val();
+      console.log(input);
+      this.collection.add({name: this.ui.myInput.val()});
+      this.render();
+    },
+    done: function(child){
+      this.collection.remove(child.model);
+      this.render();
     }
   });
 
