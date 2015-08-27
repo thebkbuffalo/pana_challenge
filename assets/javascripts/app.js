@@ -39,7 +39,6 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
     },
     add: function(){
       var input = this.ui.myInput.val();
-      console.log(input);
       localStorage.setItem('Todoitem', input);
       var added = this.collection.add({name: input});
       this.render();
@@ -53,6 +52,7 @@ App.module("Todo", function(Todo, App, Backbone, Marionette, $, _){
 
   Todo.addInitializer(function(){
     var todos = localStorage.getItem("Todoitem");
+    console.log(todos);
     var collection = new TodoCollection(todos);
     App.mainRegion.show(new TodoListView({ collection: collection }));
   });

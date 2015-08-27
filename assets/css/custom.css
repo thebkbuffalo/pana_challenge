@@ -9,3 +9,9 @@ body {
 ul {
   list-style-type: none;
 }
+
+li {
+  cursor: crosshair;
+  border: 2px solid black;
+  margin: 1em 30em;
+}
